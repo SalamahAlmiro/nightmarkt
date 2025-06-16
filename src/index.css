@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+body {
+  background-image: url('/BG.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(2.3px);
+  z-index: -1;
+  background: linear-gradient(rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.2));
+}
