@@ -10,25 +10,28 @@ import Sidebar from './components/Sidebar';
 function App() {
 
   return (
-    <div className="flex h-screen overflow-hidden">
-      <aside className="w-20 z-1 bg-gradiant from-purple-900 to-blue-900 text-white h-screen">   
-        <Sidebar />
+  <Router>
+    <div className="grid grid-rows-[6%_94%] h-full w-full">
+      <header className="row-span-1 grid grid-cols-[20%_80%] z-0 bg-gradient-to-r from-purple-950 to-blue-900">
+        
+      </header>
+
+      <aside className="w-0 mr-2 z-1 bg-gradiant from-purple-900 to-blue-900 text-white overflow-auto">   
+        
       </aside>
-      <div className="flex-1 overflow-auto">
-        <main className="min-h-full">
-          <Router>
-            <Routes>
-              <Route>
-                <Route path="/products" element={<ViewProduct />} />
-                <Route path="/products/add" element={<AddProduct />} />
-                <Route path="/products/edit" element={<EditProduct />} />
-                <Route path="/products/delete" element={<DeleteProduct />} />
-              </Route>
-            </Routes>
-          </Router>
-        </main>
-      </div>
+
+      <main className="flex-1 pl-2 row-start-2 col-span-1">
+        <Routes>
+          <Route>
+            <Route path="/products" element={<ViewProduct />} />
+            <Route path="/products/add" element={<AddProduct />} />
+            <Route path="/products/edit" element={<EditProduct />} />
+            <Route path="/products/delete" element={<DeleteProduct />} />
+          </Route>
+        </Routes>
+      </main>
     </div>
+  </Router>  
   )
 }
 

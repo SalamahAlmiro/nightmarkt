@@ -11,26 +11,22 @@ function ProductList({ products, containerWidth }) {
   /*const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");*/
-  const GAP = 20;
+  const GAP = 29;
   const idealCardWidth = 225;
-  const COLUMN_COUNT = Math.min(Math.max(1, Math.floor(containerWidth / (idealCardWidth + GAP))), 5);
+  const COLUMN_COUNT = Math.min(Math.max(1, Math.floor(containerWidth / (idealCardWidth + GAP))), 6);
   const rowCount = Math.ceil(products.length / COLUMN_COUNT);
-  //const CARD_WIDTH = getCardWidth(COLUMN_COUNT, containerWidth, GAP);
   const CARD_WIDTH = 225;
   const CARD_HEIGHT =  400;
   const flooredWidth = Math.floor(containerWidth / COLUMN_COUNT) * COLUMN_COUNT;
 
-  const columnWidth = CARD_WIDTH + GAP;
-  const rowHeight = CARD_HEIGHT + GAP;
-
 
   
   return (
-    <div  className={`w-full flex justify-center pt-2`}>
+    <div className="grid w-full h-full overflow-y-auto overflow-x-hidden">
       <Grid
         columnCount={COLUMN_COUNT}
         columnWidth={CARD_WIDTH + GAP}
-        height={window.innerHeight - 80}
+        height={window.innerHeight - 10}
         rowCount={rowCount}
         rowHeight={CARD_HEIGHT + GAP}
         width= {flooredWidth}

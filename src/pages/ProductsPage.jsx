@@ -21,7 +21,7 @@ function ProductsPage() {
             /*const products = await getAllProducts();
             setProducts(products);*/
 
-            const fakeProducts = Array(500)
+            const fakeProducts = Array(50)
             .fill(null)
             .map((_, i) => ({
               ...products[0],
@@ -42,9 +42,9 @@ function ProductsPage() {
       }, []);
     console.log(containerWidth);
     return (
-      <div ref={ref} className="min-h-screen w-auto grid gap-5 justify-start "> 
-          <section className="bg-white/10 backdrop-blur-sm m-5 p-2 w-auto h-auto rounded-xl shadow-lg overflow-auto">
-            <ProductList products={products} containerWidth={containerWidth} />
+      <div ref={ref} className="h-full overflow-hidden w-full grid justify-items-center"> 
+          <section className="bg-white/10 backdrop-blur-sm mt-5 mr-2 mb-4 w-auto rounded-xl shadow-lg overflow-hidden">
+            <ProductList products={products} containerWidth={containerWidth}/>
           </section>
       </div>
   );
