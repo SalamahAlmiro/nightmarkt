@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
 body {
-  background-image: url('/BG.png');
+  background-image: url('/BG.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
   margin: 0;
   padding: 0;
+  ::-webkit-scrollbar {
+  display: none;
+  }
 }
 
 body::before {

@@ -1,20 +1,18 @@
 import React, {useState, useEffect} from "react";
-import ProductList from "../features/products/ProductList";
+import ProductList from "../features/products/ProductList.jsx";
 import io from "socket.io-client";
-import { getAllProducts, createProduct, deleteProduct, editProduct } from "../features/products/ProductAPI";
+import { getAllProducts,  editProduct } from "../features/products/ProductAPI.js";
 import { clearInputs } from "../utils/clearProductInputs.js";  
 import '../index.css';
 
 const socket = io("http://localhost:5001");
 
-function ProductsManagement() {
+function EditProduct() {
     const [products, setProducts] = useState([]);
+    const [id, setId] = useState("");
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
-    const [id, setId] = useState("");
-
-
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -24,12 +22,7 @@ function ProductsManagement() {
                 console.error("Failed to fetch products", err);
             }
         };
-
         fetchProducts();
-
-        socket.on("product_created", (newProduct) => {
-            setProducts((prevProducts) => [...prevProducts, newProduct]);
-        });
 
         socket.on("product_updated", (updatedProduct) => {
             setProducts((prevProducts) =>
@@ -39,34 +32,10 @@ function ProductsManagement() {
             );
         });
 
-        socket.on("product_deleted", (deletedProduct) => {
-            setProducts((prevProducts) =>
-                prevProducts.filter((product) => product.id !== deletedProduct.id)
-            );
-        });
-
         return () => {
-            socket.off("product_created");
             socket.off("product_updated");
-            socket.off("product_deleted");
         };
     }, []);
-    
-    const handleCreateProduct = async (e) => {
-        e.preventDefault();
-        try {
-            const newProduct = {
-                name,
-                description,
-                price: parseFloat(price)
-            };
-            const response = await createProduct(newProduct);
-            console.log(response);
-            clearInputs(setName, setDescription, setPrice, setId);
-        } catch (err) {
-        console.error("Error creating product:", err);
-        }
-    };
 
     const handleEditProduct = async (e) => {
         e.preventDefault();
@@ -77,7 +46,6 @@ function ProductsManagement() {
                 description,
                 price: parseFloat(price)
             };
-
             const response = await editProduct(updatedProduct);
             console.log(response);
             clearInputs(setName, setDescription, setPrice, setId);
@@ -85,30 +53,17 @@ function ProductsManagement() {
             console.error("Error editing product", err);
         }
     };
-
-    const handleDeleteProduct = async (e) => {
-        e.preventDefault();
-        try {
-            const deletedProduct = {
-                id: Number(id) 
-            };
-            const response= await deleteProduct(deletedProduct);
-            console.log(response);
-            clearInputs(setName, setDescription, setPrice, setId);
-        } catch (err) {
-            console.error("Error deleting product: ", err);
-        }
-    };
-    
     return (
         <div className="min-h-screen flex flex-col items-center justify-start px-6 py-12">
-            <h1 className="text-4xl font-bold text-night-purple mb-10">Manage Products</h1> 
             <section className="w-full max-w-4xl bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg mb-10">
-            <ProductList products={products} />
-            </section>
-            <section className="w-full max-w-4xl bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg mb-10">
-            <h2 className="text-2xl font-semibold mb-6">Add a product</h2>
-            <form onSubmit={handleCreateProduct} className="flex flex-col gap-4">
+            <h2 className="text-2xl font-semibold mb-6">Edit product</h2>
+            <form onSubmit={handleEditProduct} className="flex flex-col gap-4">
+                <input type="number" 
+                    step="1"
+                    placeholder="ID" 
+                    value={id} 
+                    onChange={(e) => setId(e.target.value)} 
+                />
                 <input type="text" 
                        placeholder="Name"
                        value={name}
@@ -125,11 +80,11 @@ function ProductsManagement() {
                        value={price} 
                        onChange={(e) => setPrice(e.target.value)} 
                 />                
-                <button type="submit">Add product</button>
+                <button type="submit">Edit product</button>
             </form>
             </section>
         </div>
-    );
+    );      
 }
 
-export default ProductsManagement;
+export default EditProduct;
