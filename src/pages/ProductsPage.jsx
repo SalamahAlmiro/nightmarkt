@@ -40,10 +40,9 @@ function ProductsPage() {
       
         fetchProducts();
       }, []);
-    console.log(containerWidth);
     return (
-      <div ref={ref} className="h-full overflow-hidden w-full grid justify-items-center"> 
-          <section className="bg-white/10 backdrop-blur-sm mt-5 mr-2 mb-4 w-auto rounded-xl shadow-lg overflow-hidden">
+      <div ref={ref} className="overflow-hidden p-2 w-full h-full grid justify-items-center"> 
+          <section className="bg-white/10 backdrop-blur-sm w-full h-full rounded-xl overflow-hidden">
             <ProductList products={products} containerWidth={containerWidth}/>
           </section>
       </div>

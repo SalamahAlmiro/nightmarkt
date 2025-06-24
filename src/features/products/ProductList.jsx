@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useState, useEffect }  from "react";
 import "../../index.css";
 import { FixedSizeGrid as Grid } from "react-window";
-import { useState } from "react";
 import ProductCard from "../../components/productCard";
-import { useMeasure } from '@react-hookz/web';
 
 
 
@@ -11,7 +9,7 @@ function ProductList({ products, containerWidth }) {
   /*const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");*/
-  const GAP = 29;
+  const GAP = 27;
   const idealCardWidth = 225;
   const COLUMN_COUNT = Math.min(Math.max(1, Math.floor(containerWidth / (idealCardWidth + GAP))), 6);
   const rowCount = Math.ceil(products.length / COLUMN_COUNT);
@@ -19,40 +17,60 @@ function ProductList({ products, containerWidth }) {
   const CARD_HEIGHT =  400;
   const flooredWidth = Math.floor(containerWidth / COLUMN_COUNT) * COLUMN_COUNT;
 
+  const [gridHeight, setGridHeight] = useState(0);
 
+  useEffect(() => {
+    const headerHeight = document.querySelector("header")?.offsetHeight || 0;
+    const newHeight = window.innerHeight - headerHeight;
+    console.log(window.innerHeight - headerHeight);
+    setGridHeight(newHeight);
+    const onResize = () => {
+      const newHeight = window.innerHeight - (document.querySelector("header")?.offsetHeight || 0);
+      setGridHeight(newHeight);
+    };
+
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  useEffect(() => {
+  console.log("Updated gridHeight: ", gridHeight);
+  }, [gridHeight]);
   
   return (
-    <div className="grid w-full h-full overflow-y-auto overflow-x-hidden">
-      <Grid
-        columnCount={COLUMN_COUNT}
-        columnWidth={CARD_WIDTH + GAP}
-        height={window.innerHeight - 10}
-        rowCount={rowCount}
-        rowHeight={CARD_HEIGHT + GAP}
-        width= {flooredWidth}
-      >
-        {({ columnIndex, rowIndex, style }) => {
-          const productIndex = rowIndex * COLUMN_COUNT + columnIndex;
-          if (productIndex >= products.length) return null;
+    <div className="w-full h-full overflow-y-auto overflow-x-hidden">
+      {gridHeight > 0 && (
+        <Grid
+          columnCount={COLUMN_COUNT}
+          columnWidth={CARD_WIDTH + GAP}
+          height={gridHeight - 25}
+          rowCount={rowCount}
+          rowHeight={CARD_HEIGHT + GAP}
+          width={flooredWidth}
+        >
+          {({ columnIndex, rowIndex, style }) => {
+            const productIndex = rowIndex * COLUMN_COUNT + columnIndex;
+            if (productIndex >= products.length) return null;
 
-          const product = products[productIndex];
-          return (
-            <div
-              key={product.id}
-              style={{
-                ...style,
-                left: style.left + GAP / 2,
-                top: style.top + GAP / 2,
-                width: CARD_WIDTH,
-                height: CARD_HEIGHT,
-                boxSizing: "border-box",
-              }}
-            >
-              <ProductCard product={product} />
-            </div>
-          );
-        }}
-      </Grid>
+            const product = products[productIndex];
+            return (
+              <div
+                key={product.id}
+                style={{
+                  ...style,
+                  left: style.left + GAP / 2,
+                  top: style.top + GAP / 2,
+                  width: CARD_WIDTH,
+                  height: CARD_HEIGHT,
+                  boxSizing: "border-box",
+                }}
+              >
+                <ProductCard product={product} />
+              </div>
+            );
+          }}
+        </Grid>
+      )}
     </div>  
   );
 }
@@ -60,24 +78,3 @@ function ProductList({ products, containerWidth }) {
 export default ProductList;
 
 
-/* <div className="grid place-items-stretch grid-cols-[45%_24%_29%_2%] w-[360px] h-60 grid-rows-[15%_35%_25%_20%] gap-1 p-2 bg-gray-800 rounded-lg overflow-hidden">
-        <div className="rounded w-full h-35 row-span-2 p-2">
-          <img
-            src="https://image.made-in-china.com/202f0j00HzikFDcRYLog/OEM-14-Inch-2K-IPS-HD-Screen-Factory-Directly-Supply-Netbook-3-2-Near-Square-Display-Laptop.webp"
-            alt="Product"
-            className="w-full h-full object-cover rounded"
-          />
-        </div>
-        <div className="text-white rounded content-center  col-start-2 col-span-2">Product name 20</div>
-        <div className="text-gray-200 col-start-2 col-span-2 rounded  row-start-2 row-span-2 p-1 overflow-wrap wrap-anywhere overflow-hidden">
-          description 142
-        </div>
-        <div className="text-white rounded col-start-2 col-span-2 p-1 pt-4 row-start-4 grid justify-items-end">
-        <div className="flex items-center gap-2">
-            <span className="text-sm text-green-400 font-medium">$19.99</span>
-            <button className="hover:bg-blue-500 bg-green-500 px-3 py-1 rounded text-sm font-semibold">
-              Buy now
-            </button>
-          </div>
-        </div>
-      </div> */

@@ -4,23 +4,32 @@ import AddProduct from "./pages/AddProduct";
 import EditProduct from "./pages/EditProduct";
 import DeleteProduct from "./pages/DeleteProduct";
 import Sidebar from './components/Sidebar';
-
+import Header from './components/Header';
+import { useState } from 'react'; 
 
 
 function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const toggleSidebar = () => setIsSidebarOpen(prev => !prev);
 
   return (
   <Router>
-    <div className="grid grid-rows-[6%_94%] h-full w-full">
-      <header className="row-span-1 grid grid-cols-[20%_80%] z-0 bg-gradient-to-r from-purple-950 to-blue-900">
-        
-      </header>
+    <div className="min-h-screen w-screen overflow-auto">
+        <Header onMenuClick={toggleSidebar} />
+      {isSidebarOpen && (
+        <aside 
+          className={`fixed inset-0 z-20 bg-black/35`}
+          onClick={toggleSidebar}
+        >   
+          <div 
+            className="w-64 inset-0 bg-transparent"
+            onClick={(e) => e.stopPropagation()}> 
+            <Sidebar/>
+          </div>
+        </aside>
+      )}
 
-      <aside className="w-0 mr-2 z-1 bg-gradiant from-purple-900 to-blue-900 text-white overflow-auto">   
-        
-      </aside>
-
-      <main className="flex-1 pl-2 row-start-2 col-span-1">
+      <main className="m-1 min-h-0">
         <Routes>
           <Route>
             <Route path="/products" element={<ViewProduct />} />
