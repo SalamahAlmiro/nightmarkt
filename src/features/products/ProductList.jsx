@@ -4,25 +4,22 @@ import { FixedSizeGrid as Grid } from "react-window";
 import ProductCard from "../../components/productCard";
 
 
-
 function ProductList({ products, containerWidth }) {
-  /*const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");*/
+  const isMobile = window.innerWidth < 768;
+  const CARD_WIDTH = isMobile ? 300 : 225;
   const GAP = 27;
-  const idealCardWidth = 225;
-  const COLUMN_COUNT = Math.min(Math.max(1, Math.floor(containerWidth / (idealCardWidth + GAP))), 6);
-  const rowCount = Math.ceil(products.length / COLUMN_COUNT);
-  const CARD_WIDTH = 225;
   const CARD_HEIGHT =  400;
-  const flooredWidth = Math.floor(containerWidth / COLUMN_COUNT) * COLUMN_COUNT;
+  const COLUMN_COUNT = isMobile ? 1 : Math.min(Math.max(1, Math.floor(containerWidth / (CARD_WIDTH + GAP))), 6);
+  const rowCount = Math.ceil(products.length / COLUMN_COUNT);
+  const gridWidth = isMobile 
+  ? CARD_WIDTH + GAP 
+  : COLUMN_COUNT * (CARD_WIDTH + GAP);
 
   const [gridHeight, setGridHeight] = useState(0);
 
   useEffect(() => {
     const headerHeight = document.querySelector("header")?.offsetHeight || 0;
     const newHeight = window.innerHeight - headerHeight;
-    console.log(window.innerHeight - headerHeight);
     setGridHeight(newHeight);
     const onResize = () => {
       const newHeight = window.innerHeight - (document.querySelector("header")?.offsetHeight || 0);
@@ -32,13 +29,9 @@ function ProductList({ products, containerWidth }) {
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
-
-  useEffect(() => {
-  console.log("Updated gridHeight: ", gridHeight);
-  }, [gridHeight]);
   
   return (
-    <div className="w-full h-full overflow-y-auto overflow-x-hidden">
+    <div className="w-full h-full overflow-y-auto overflow-x-hidden flex justify-center ">
       {gridHeight > 0 && (
         <Grid
           columnCount={COLUMN_COUNT}
@@ -46,7 +39,7 @@ function ProductList({ products, containerWidth }) {
           height={gridHeight - 25}
           rowCount={rowCount}
           rowHeight={CARD_HEIGHT + GAP}
-          width={flooredWidth}
+          width={gridWidth}
         >
           {({ columnIndex, rowIndex, style }) => {
             const productIndex = rowIndex * COLUMN_COUNT + columnIndex;
@@ -60,12 +53,13 @@ function ProductList({ products, containerWidth }) {
                   ...style,
                   left: style.left + GAP / 2,
                   top: style.top + GAP / 2,
+                  right: style.right + GAP / 2,
                   width: CARD_WIDTH,
                   height: CARD_HEIGHT,
                   boxSizing: "border-box",
                 }}
               >
-                <ProductCard product={product} />
+                <ProductCard product={product} cardWidth={CARD_WIDTH} />
               </div>
             );
           }}

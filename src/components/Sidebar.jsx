@@ -6,7 +6,7 @@ export default function Sidebar() {
 
 
   return (
-    <div className="h-screen bg-gradient-to-b from-purple-950 to-blue-900 text-white w-64 fixed top-0 left-0 flex flex-col p-4 transition-all">
+    <div className="h-screen bg-gradient-to-b from-purple-950 to-blue-900 text-white w-64  fixed top-0 left-0 flex flex-col p-4 transition-all">
       <p className="text-4xl mb-4 text-gray-300 font-bold font-[Trebuchet_MS]">
         Night<span className="text-[#3f96e3]">Markt</span>
       </p>
@@ -14,7 +14,7 @@ export default function Sidebar() {
         <li>
             <button
             onClick={() => setIsProductDropdownOpen(!isProductDropdownOpen)}
-            className="flex items-center justify-between w-full text-white hover:text-purple-800"
+            className="flex items-center justify-between w-full text-white hover:text-purple-800 hover:cursor-pointer"
           >
             <span>Products</span>
             <svg
