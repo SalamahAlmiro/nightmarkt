@@ -11,12 +11,9 @@ function Header({ onMenuClick }) {
           <FaBars />
         </button>
       </div>
-      <div className="flex-1 flex justify-end ml-4">
-        <input
-          id="search"
-          placeholder="Search..."
-          className="w-full max-w-sm select-text rounded-md bg-white pl-2 py-1"
-        />
+      <div className="flex-1 flex justify-end">
+        <a href="/login" className="text-md text-gray-300 hover:text-purple-800 m-1">Login</a>
+        <a href="/register" className="text-md text-gray-300 hover:text-purple-800 m-1">Register</a>
       </div>
     </header>
   );

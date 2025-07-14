@@ -1,4 +1,4 @@
-import api from "../../services/axiosConfig";
+import api from "../../../services/axiosConfig";
 
 const getAllProducts = async () => {
     const response = await api.get("/products")

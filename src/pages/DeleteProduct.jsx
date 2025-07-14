@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
-import ProductList from "../features/products/ProductList.jsx";
+import ProductList from "../features/products/components/ProductList.jsx";
 import io from "socket.io-client";
-import { getAllProducts, deleteProduct } from "../features/products/ProductAPI.js";
+import { getAllProducts, deleteProduct } from "../features/products/API/ProductAPI.js";
 import { clearInputs } from "../utils/clearProductInputs.js";  
 import '../index.css';
 
@@ -47,18 +47,9 @@ function DeleteProduct() {
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-start px-6 py-12">
-            <section className="w-full max-w-4xl bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg mb-10">
-            <h2 className="text-2xl font-semibold mb-6">Delete product</h2>
-            <form onSubmit={handleDeleteProduct} className="flex flex-col gap-4">
-                <input type="number" 
-                    step="1"
-                    placeholder="ID" 
-                    value={id} 
-                    onChange={(e) => setId(e.target.value)} 
-                />                
-                <button type="submit">Delete product</button>
-            </form>
+        <div className="min-h-screen flex flex-col items-center justify-start px-2 py-5">
+            <section className=" bg-white/10 backdrop-blur-md p-6 rounded w-full h-157">
+            
             </section>
         </div>
     );

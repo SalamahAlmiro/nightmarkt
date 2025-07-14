@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
-import ProductList from "../features/products/ProductList";
-import { getAllProducts } from "../features/products/ProductAPI";
+import ProductList from "../features/products/components/ProductList";
+import { getAllProducts } from "../features/products/API/ProductAPI";
 import useMeasure from 'react-use-measure';
 
 function getRandom(min, max) {

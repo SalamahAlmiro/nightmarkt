@@ -1,5 +1,5 @@
 import React from "react";
-import Rating from "./rating.jsx"; 
+import Rating from "../../../components/rating"; 
 
 
 function ProductCard({ product, cardWidth }) {

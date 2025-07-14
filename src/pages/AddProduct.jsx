@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
-import ProductList from "../features/products/ProductList.jsx";
 import io from "socket.io-client";
-import { createProduct } from "../features/products/ProductAPI.js";
+import { createProduct } from "../features/products/API/ProductAPI.js";
 import { clearInputs } from "../utils/clearProductInputs.js";  
 import '../index.css';
 
@@ -69,28 +68,9 @@ useEffect(() => {
     };
     
     return (
-        <div className="min-h-screen flex flex-col items-center justify-start px-6 py-12">
-            <section className=" bg-white/10 backdrop-blur-md p-6">
-            <h2 className="text-2xl font-semibold mb-6">Add a product</h2>
-            <form onSubmit={handleCreateProduct} className="flex flex-col gap-4">
-                <input type="text" 
-                       placeholder="Name"
-                       value={name}
-                       onChange={(e) => setName(e.target.value)} 
-                />
-                <input type="text" 
-                       placeholder="description"
-                       value={description}
-                       onChange={(e) => setDescription(e.target.value)} 
-                />
-                <input type="number" 
-                       step=".01"
-                       placeholder="Price" 
-                       value={price} 
-                       onChange={(e) => setPrice(e.target.value)} 
-                />                
-                <button className=" bg-gray-300 hover:bg-blue-300" type="submit">Add product</button>
-            </form>
+        <div className="min-h-screen flex flex-col items-center justify-start px-2 py-5">
+            <section className=" bg-white/10 backdrop-blur-md p-6 rounded w-full h-157">
+            
             </section>
         </div>
     );
