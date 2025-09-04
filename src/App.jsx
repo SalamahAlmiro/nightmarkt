@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ViewProduct, AddProduct, EditProduct, DeleteProduct, LoginPage, RegisterPage } from './pages';
-import { Sidebar, Header } from "./components";
+import { ViewProduct, AddProduct, EditProduct, DeleteProduct, LoginPage, RegisterPage, Logout } from './pages';
+import { Sidebar, Header, Protected } from "./components";
 import { useState } from 'react'; 
 
 function App() {
@@ -40,13 +40,31 @@ function App() {
             </div>
           </aside>
         )}
-      <main className="m-1 min-h-0">
+      <main className="min-h-0">
         <Routes>
           <Route>
+            <Route path="/" element={<ViewProduct />} /> //I'll make a home page later.
             <Route path="/products" element={<ViewProduct />} />
-            <Route path="/products/add" element={<AddProduct />} />
-            <Route path="/products/edit" element={<EditProduct />} />
-            <Route path="/products/delete" element={<DeleteProduct />} />
+            <Route path="/products/add" element={
+                <Protected>
+                  <AddProduct />
+                </Protected>
+              } />
+            <Route path="/products/edit" element={
+              <Protected>
+                <EditProduct />
+              </Protected>
+            } />
+            <Route path="/products/delete" element={
+              <Protected>
+                <DeleteProduct />
+              </Protected>
+            } />
+            <Route path="/logout" element={
+              <Protected>
+                <Logout />
+              </Protected>
+            } />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage   />} />
           </Route>
@@ -58,3 +76,18 @@ function App() {
 }
 
 export default App
+
+/*
+
+TO DO: 
+1- add product feature, adding attributes and stuff for the product
+2- filter products in the product page and a search function
+3- view details page for products
+4- my products page
+5- my orders page 
+6- user profile page
+7- wishlist system maybe
+8- cart.... 
+9- token managment
+
+*/

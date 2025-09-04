@@ -1,22 +1,26 @@
 import { useState } from "react";
 import { loginUser} from "../services/authService";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 
 const LoginPage = () => {
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
     try {
       const res = await loginUser({ email, password });
       const { user, token } = res;
       login(token, user);
-      setMessage("Logged in Successfully.")
+      setMessage("Logged in Successfully.");
+      navigate("/products" , { replace: true });
     } catch(err) {
       const errorMessage = err.response?.data?.message || "Unexpected error occurred";
       setMessage(errorMessage);
@@ -29,7 +33,7 @@ const LoginPage = () => {
         className="bg-white/10 backdrop-blur-sm shadow-2xl 
         lg:w-[25vw] sm:w-[100vw] h-auto 
         m-10 rounded-xl overflow-hidden 
-        flex flex-col items-center"
+        flex flex-col items-center shadow-black/75"
       >
         <div 
           className="bg-gradient-to-b from-purple-950 to-blue-950 
@@ -38,36 +42,40 @@ const LoginPage = () => {
         >
           <h1 className="text-gray-200 mb-5 text-3xl"> Log In </h1>
         </div>
-        <div className="m-2 p-3 flex flex-col items-start">
-          <p className="text-gray-300 text-lg">Email</p>
-          <input 
-            className="h-10 w-75 sm:w-82 pl-2 bg-white/50 rounded 
-            hover:bg-white/80 hover:shadow-lg hover:shadow-purple-500/40 
-            focus:outline-none focus:ring-2 focus:ring-purple-800 transition focus:shadow-lg focus:shadow-purple-500 focus:bg-white"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="m-2 p-3 flex flex-col items-start">
-          <p className="text-gray-300 text-lg">Password</p>
-          <input 
-            className="h-10 w-75 sm:w-82 pl-2 bg-white/50 rounded 
-            hover:bg-white/80 hover:shadow-lg hover:shadow-purple-500/40 
-            focus:outline-none focus:ring-2 focus:ring-purple-800 transition focus:shadow-lg focus:shadow-purple-500 focus:bg-white" 
-            type="password" 
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+        <form onSubmit={handleLogin} className="contents">
+          <div className="m-2 p-3 flex flex-col items-start">
+            <label htmlFor="email" className="text-gray-300 text-lg">Email</label>
+            <input
+              id="email" 
+              className="h-10 w-75 sm:w-82 pl-2 bg-white/50 rounded 
+              hover:bg-white/80 hover:shadow-lg hover:shadow-purple-500/40 
+              focus:outline-none focus:ring-2 focus:ring-purple-800 transition focus:shadow-lg focus:shadow-purple-500 focus:bg-white"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
-        </div>
-        <button 
-          className="rounded text-lg font-semibold tracking-wide text-white outline-2 outline-blue-800 bg-black/50 py-1 px-4 m-5 
-          hover:bg-black/80  hover:cursor-pointer hover:shadow-lg hover:shadow-purple-500/40 
-          focus:outline-none focus:ring-2 focus:ring-purple-900 transition focus:shadow-lg focus:shadow-purple-500 focus:bg-black 
-          active:scale-98 transition-transform duration-200"
-          onClick={handleLogin}
-        >
-          Sign in
-        </button>
+          </div>
+          <div className="m-2 p-3 flex flex-col items-start">
+            <label htmlFor="password" className="text-gray-300 text-lg">Password</label>
+            <input 
+              id="password"
+              className="h-10 w-75 sm:w-82 pl-2 bg-white/50 rounded 
+              hover:bg-white/80 hover:shadow-lg hover:shadow-purple-500/40 
+              focus:outline-none focus:ring-2 focus:ring-purple-800 transition focus:shadow-lg focus:shadow-purple-500 focus:bg-white" 
+              type="password" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              />
+          </div>
+          <button 
+            className="rounded text-lg font-semibold tracking-wide text-white outline-2 outline-blue-800 bg-black/50 py-1 px-4 m-5 
+            hover:bg-black/80  hover:cursor-pointer hover:shadow-lg hover:shadow-purple-500/40 
+            focus:outline-none focus:ring-2 focus:ring-purple-900 transition focus:shadow-lg focus:shadow-purple-500 focus:bg-black 
+            active:scale-98 transition-transform duration-200"
+            type="submit"
+          >
+            Sign in
+          </button>
+        </form>
         {message && (
           <p 
           className={`m-5 text-sm mt-2 text-center 

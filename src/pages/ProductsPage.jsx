@@ -41,12 +41,12 @@ function ProductsPage() {
         fetchProducts();
       }, []);
     return (
-      <div ref={ref} className="overflow-hidden p-2 w-full h-full grid justify-items-center"> 
-          <section className="bg-white/10 backdrop-blur-sm w-full h-full rounded-xl overflow-hidden">
-            <ProductList products={products} containerWidth={containerWidth}/>
-          </section>
+      <div ref={ref} className="overflow-hidden p-2 w-full h-[calc(100vh-4rem)] flex flex-col justify-items-center "> 
+        <section className="bg-white/10 backdrop-blur-sm w-full h-full rounded-xl overflow-hidden">
+          <ProductList products={products} containerWidth={containerWidth}/>
+        </section>
       </div>
-  );
+    );
 }
 
 export default ProductsPage;
