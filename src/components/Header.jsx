@@ -30,10 +30,10 @@ function Header({ onMenuClick }) {
   }, [isUserDropdownOpen]);
 
   return (
-    <header className="bg-gradient-to-r from-purple-950 to-blue-900 p-2 flex items-center justify-between z-10">
+    <header className="bg-gradient-to-r from-gray-950 to-blue-900 p-2 flex items-center justify-between z-10">
       <div className="flex items-between gap-2">
           <a href="/" className="text-4xl text-gray-300 font-bold font-[Trebuchet_MS]">
-            Night<span className="text-[#3f96e3]">Markt</span>
+            Night<span className="text-[#3f96e3]">Market</span>
          </a>
         <button className="text-white text-2xl hover:cursor-pointer" onClick={onMenuClick}>
           <FaBars />
@@ -41,8 +41,8 @@ function Header({ onMenuClick }) {
       </div>
       {!isAuthenticated && (
         <div className="flex-1 flex justify-end">
-          <a href="/login" className="text-md text-gray-300 hover:text-purple-800 m-1">Login</a>
-          <a href="/register" className="text-md text-gray-300 hover:text-purple-800 m-1">Register</a>
+          <a href="/login" className="text-md text-gray-300 hover:text-black m-1">Login</a>
+          <a href="/register" className="text-md text-gray-300 hover:text-black m-1">Register</a>
         </div>
       )}
       <div className="relative">
@@ -51,7 +51,7 @@ function Header({ onMenuClick }) {
             <div ref={dropdownRef} className="mr-2">
               <button
                 onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
-                className="flex items-end justify-between w-full text-white hover:text-purple-800 hover:cursor-pointer">
+                className="flex items-end justify-between w-full text-white hover:text-black hover:cursor-pointer">
                 <span className="text-xl"> {user.username} </span>
                 <svg
                   className={`w-4 h-4 mb-1 ml-1 transform transition-transform ${isUserDropdownOpen ? 'rotate-90' : ''}`}
@@ -63,14 +63,14 @@ function Header({ onMenuClick }) {
                 </svg>
               </button>
               {isUserDropdownOpen && (
-                <ul className="animate-fadeIn absolute right-0 mt-2 w-40 p-2 bg-[#1e1e2f] rounded-sm 
+                <ul className="animate-fadeIn absolute right-0 mt-2 w-40 p-2 bg-black rounded-sm 
 										           shadow-lg z-50">
                     <li>
 											<a 
 											href="#" 
 											className="
 												block px-4 py-2 text-sm text-gray-200 
-												hover:bg-purple-700/30 hover:text-white rounded-md 	 
+												hover:bg-white/30 hover:text-white rounded-md 	 
 												transition-colors">
 											Account
 											</a>
@@ -80,7 +80,7 @@ function Header({ onMenuClick }) {
 											href="#" 
 											className="
 												block px-4 py-2 text-sm text-gray-200 
-												hover:bg-purple-700/30 hover:text-white rounded-md 	 
+												hover:bg-white/30 hover:text-white rounded-md 	 
 												transition-colors">
 											Wishlist
 											</a>
@@ -90,7 +90,7 @@ function Header({ onMenuClick }) {
 											href="#" 
 											className="
 												block px-4 py-2 text-sm text-gray-200 
-												hover:bg-purple-700/30 hover:text-white rounded-md 	 
+												hover:bg-white/30 hover:text-white rounded-md 	 
 												transition-colors">
 											My Orders
 											</a>
@@ -100,7 +100,7 @@ function Header({ onMenuClick }) {
 											href="#" 
 											className="
 												block px-4 py-2 text-sm text-gray-200 
-												hover:bg-purple-700/30 hover:text-white rounded-md 	 
+												hover:bg-white/30 hover:text-white rounded-md 	 
 												transition-colors">
 											My Listings
 											</a>
@@ -110,7 +110,7 @@ function Header({ onMenuClick }) {
 											href="/logout" 
 											className="
 												block px-4 py-2 text-sm text-gray-200 
-												hover:bg-purple-700/30 hover:text-white rounded-md 	 
+												hover:bg-white/30 hover:text-white rounded-md 	 
 												transition-colors">
 											Logout
 											</a>

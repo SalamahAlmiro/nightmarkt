@@ -25,7 +25,7 @@ const selectStyles = {
     borderRadius: "0.25rem",
     borderColor: "transparent",
     boxShadow: state.isFocused
-      ? "0 0 0 2px rgba(107, 33, 168, 1), 0 10px 15px -3px rgba(168, 85, 247, 0.5)"
+      ? "0 0 0 2px rgba(26, 17, 198, 0.3), 0 10px 15px -3px rgba(14, 22, 241, 0.5)"
       : undefined,
     transition: "all 0.2s ease",
     "&:hover": state.isFocused ? {
@@ -35,7 +35,7 @@ const selectStyles = {
     : {
       backgroundColor: "rgba(255, 255, 255, 0.8)",
       boxShadow:
-        "0 10px 15px -3px rgba(168, 85, 247, 0.4), 0 4px 6px -4px rgba(0,0,0,0.1)",
+        "0 10px 15px -3px rgba(27, 20, 162, 0.3), 0 4px 6px -4px rgba(0,0,0,0.1)",
       cursor: "pointer"
     },
     
@@ -56,7 +56,7 @@ const selectStyles = {
 
   menu: (base) => ({
     ...base,
-    backgroundColor: "#1e1e2f", 
+    backgroundColor: "#171724ff", 
     color: "white",
     zIndex: 10,
     borderRadius: "0.25rem",
@@ -64,7 +64,7 @@ const selectStyles = {
   option: (base, state) => ({
     ...base,
     backgroundColor: state.isFocused
-      ? "rgba(168, 85, 247, 0.3)"
+      ? "rgba(27, 20, 162, 0.3)"
       : "transparent",
     color: "white",
     padding: "0.5rem 1rem",
