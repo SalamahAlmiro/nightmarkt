@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from "react";
 import "../../../index.css";
 import { FixedSizeGrid as Grid } from "react-window";
-import ProductCard from "./productCard";
+import ProductCard from "./ProductCard";
 
 
 function ProductList({ products, containerWidth }) {

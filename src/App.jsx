@@ -1,30 +1,56 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ViewProduct, AddProduct, EditProduct, DeleteProduct, LoginPage, RegisterPage, Logout } from './pages';
-import { Sidebar, Header, Protected } from "./components";
-import { useState } from 'react'; 
+import { ViewProduct, AddProduct, EditProduct, DeleteProduct, ErrorPage } from './pages';
+import { Header } from "./components";
 
 function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [shouldRenderSidebar, setShouldRenderSidebar] = useState(false);
-  const [animateSidebar, setAnimateSidebar] = useState(false);
-
-  const toggleSidebar = () => {
-    if (!isSidebarOpen) {
-      setShouldRenderSidebar(true);
-      requestAnimationFrame(() => setAnimateSidebar(true));
-      setIsSidebarOpen(true);
-    } else {
-      setAnimateSidebar(false);
-      setIsSidebarOpen(false);
-      setTimeout(() => setShouldRenderSidebar(false), 300);
-    }
-  };
-
-
+  
   return (
   <Router>
     <div className="min-h-screen w-screen overflow-auto">
-        <Header onMenuClick={toggleSidebar} />
+        <Header />
+      <main className="min-h-0">
+        <Routes>
+          <Route>
+            <Route path="/home" element={"#"} /> //empty for now...
+            <Route path="/products" element={
+              <ViewProduct />
+              } />
+            <Route path="/products/add" element={
+              <AddProduct />
+              } />
+            <Route path="/products/edit" element={
+              <EditProduct />
+            } />
+            <Route path="/products/delete" element={
+              <DeleteProduct />
+            } />
+            <Route path="*" element={
+              <ErrorPage />
+            } />
+          </Route>
+        </Routes>
+      </main>
+    </div>
+  </Router>  
+  )
+}
+
+export default App
+
+/* 
+
+TO DO: 
+1- add product feature, adding attributes and stuff for the product
+2- filter products in the product page and a search function
+3- view details page for products
+4- my products page
+5- my orders page 
+6- user profile page
+7- wishlist system maybe
+8- cart.... 
+9- token managment
+
+<Header onMenuClick={toggleSidebar} />
 
         {shouldRenderSidebar && (
           <aside 
@@ -40,54 +66,6 @@ function App() {
             </div>
           </aside>
         )}
-      <main className="min-h-0">
-        <Routes>
-          <Route>
-            <Route path="/" element={<ViewProduct />} /> //I'll make a home page later.
-            <Route path="/products" element={<ViewProduct />} />
-            <Route path="/products/add" element={
-                <Protected>
-                  <AddProduct />
-                </Protected>
-              } />
-            <Route path="/products/edit" element={
-              <Protected>
-                <EditProduct />
-              </Protected>
-            } />
-            <Route path="/products/delete" element={
-              <Protected>
-                <DeleteProduct />
-              </Protected>
-            } />
-            <Route path="/logout" element={
-              <Protected>
-                <Logout />
-              </Protected>
-            } />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage   />} />
-          </Route>
-        </Routes>
-      </main>
-    </div>
-  </Router>  
-  )
-}
 
-export default App
-
-/*
-
-TO DO: 
-1- add product feature, adding attributes and stuff for the product
-2- filter products in the product page and a search function
-3- view details page for products
-4- my products page
-5- my orders page 
-6- user profile page
-7- wishlist system maybe
-8- cart.... 
-9- token managment
 
 */

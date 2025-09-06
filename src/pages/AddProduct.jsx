@@ -1,15 +1,10 @@
 import React, {useState, useEffect} from "react";
-import io from "socket.io-client";
 import { createProduct } from "../features/products/API/ProductAPI.js";
 import '../index.css';
 import ProductCatInput from "../features/products/components/ProductCatInput.jsx";
 
-const socket = io("http://localhost:5001");
 
 function AddProduct() {
-    const storedUser = localStorage.getItem("user");
-    const user = JSON.parse(storedUser);
-    const userId = user?.id;
 
     const [isImageValid, setIsImageValid] = useState(false);
     const [name, setName] = useState("");
@@ -19,16 +14,6 @@ function AddProduct() {
     const [imageUrl, setImageUrl] = useState("");
     const [message, setMessage] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
-
-    useEffect(() => {
-        socket.on("product_created", (product) => {
-            console.log(product);
-        });
-
-        return () => {
-            socket.off("product_created");
-        };
-    }, []);
 
     const handleCreateProduct = async (e) => {
         e.preventDefault();
@@ -55,7 +40,6 @@ function AddProduct() {
                 description,
                 category,
                 image_url : imageUrl,
-                user_id: parseInt(userId),
             };
             await createProduct(newProduct);
         } catch (err) {

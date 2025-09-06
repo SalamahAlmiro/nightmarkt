@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import ProductList from "../features/products/components/ProductList";
+import ProductList from "../features/products/components/ProductsList";
 import { getAllProducts } from "../features/products/API/ProductAPI";
 import useMeasure from 'react-use-measure';
 
@@ -16,10 +16,18 @@ function ProductsPage() {
     const containerWidth = bounds.width;;
 
     useEffect(() => {
+      const fetchProducts = async () => {
+      const products = await getAllProducts();
+      setProducts(products); 
+      }
+      fetchProducts();
+    })
+
+    /* useEffect(() => {
         const fetchProducts = async () => {
           try {
             /*const products = await getAllProducts();
-            setProducts(products);*/
+            setProducts(products);
 
             const fakeProducts = Array(50)
             .fill(null)
@@ -39,7 +47,7 @@ function ProductsPage() {
         };
       
         fetchProducts();
-      }, []);
+      }, []); */
     return (
       <div ref={ref} className="overflow-hidden p-2 w-full h-[calc(100vh-4rem)] flex flex-col justify-items-center "> 
         <section className="bg-white/10 backdrop-blur-sm w-full h-full rounded-xl overflow-hidden">
