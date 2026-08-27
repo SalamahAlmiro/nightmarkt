@@ -4,7 +4,7 @@ import { createProduct } from "../features/products/API/ProductAPI.js";
 import '../index.css';
 import ProductCatInput from "../features/products/components/ProductCatInput.jsx";
 
-const socket = io("http://localhost:5001");
+const socket = io(import.meta.env.VITE_SOCKET_URL || "http://localhost:5001");
 
 function AddProduct() {
     const storedUser = localStorage.getItem("user");

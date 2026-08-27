@@ -5,7 +5,7 @@ import { getAllProducts,  editProduct } from "../features/products/API/ProductAP
 import { clearInputs } from "../utils/clearProductInputs.js";  
 import '../index.css';
 
-const socket = io("http://localhost:5001");
+const socket = io(import.meta.env.VITE_SOCKET_URL || "http://localhost:5001");
 
 function EditProduct() {
     const [products, setProducts] = useState([]);
