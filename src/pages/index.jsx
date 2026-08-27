@@ -3,3 +3,6 @@ export { default as AddProduct } from './AddProduct';
 export { default as EditProduct } from './EditProduct';
 export { default as DeleteProduct } from './DeleteProduct';
 export {default as ErrorPage } from './ErrorPage';
+export {default as RegisterPage } from './RegisterPage';
+export {default as LoginPage } from './LoginPage';
+export {default as Logout } from './Logout';

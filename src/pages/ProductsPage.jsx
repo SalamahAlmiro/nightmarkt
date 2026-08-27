@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import ProductList from "../features/products/components/ProductsList";
+import ProductList from "../features/products/components/ProductList";
 import { getAllProducts } from "../features/products/API/ProductAPI";
 import useMeasure from 'react-use-measure';
 
@@ -17,37 +17,29 @@ function ProductsPage() {
 
     useEffect(() => {
       const fetchProducts = async () => {
-      const products = await getAllProducts();
-      setProducts(products); 
-      }
-      fetchProducts();
-    })
+        try {
+          const products = await getAllProducts();
+          setProducts(products);
 
-    /* useEffect(() => {
-        const fetchProducts = async () => {
-          try {
-            /*const products = await getAllProducts();
-            setProducts(products);
-
-            const fakeProducts = Array(50)
-            .fill(null)
-            .map((_, i) => ({
-              ...products[0],
-              id: i + 1,
-              name: `Product name ${i + 1}`,
-              description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non dolor sit amet ex elementum pharetra vitae at nunc. Duis at dui neque. Pellentesque posuere a enim ut lacinia. Sed ullamcorper velit ac tortor luctus, nec iaculis velit tristique. Donec tincidunt posuere suscipit. Cras id sodales urna, vitae venenatis lorem. Aliquam rhoncus varius dolor, quis imperdiet odio tincidunt eget. Sed ante nibh, ullamcorper in lacus id, viverra porttitor leo. Sed in ligula sed enim tincidunt eleifend. Suspendisse potenti. Donec euismod, nisi vel consectetur interdum, nisl nisi aliquam nunc, nec facilisis enim est a quam.",
-              image_url : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhNEFfCoMtf9Z8UpZR08wQckvmslbNtti4w&s",
-              price: 50,
-              rating: Math.round(getRandom(3, 5) * 10) / 10,
-            }));
-            setProducts(fakeProducts);
-          } catch (err) {
-            console.error("Failed to fetch products", err);
-          }
-        };
+          const fakeProducts = Array(50)
+          .fill(null)
+          .map((_, i) => ({
+            ...products[0],
+            id: i + 1,
+            name: `Product name ${i + 1}`,
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non dolor sit amet ex elementum pharetra vitae at nunc. Duis at dui neque. Pellentesque posuere a enim ut lacinia. Sed ullamcorper velit ac tortor luctus, nec iaculis velit tristique. Donec tincidunt posuere suscipit. Cras id sodales urna, vitae venenatis lorem. Aliquam rhoncus varius dolor, quis imperdiet odio tincidunt eget. Sed ante nibh, ullamcorper in lacus id, viverra porttitor leo. Sed in ligula sed enim tincidunt eleifend. Suspendisse potenti. Donec euismod, nisi vel consectetur interdum, nisl nisi aliquam nunc, nec facilisis enim est a quam.",
+            image_url : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhNEFfCoMtf9Z8UpZR08wQckvmslbNtti4w&s",
+            price: 50,
+            rating: Math.round(getRandom(3, 5) * 10) / 10,
+          }));
+          setProducts(fakeProducts);
+        } catch (err) {
+          console.error("Failed to fetch products", err);
+        }
+      };
       
         fetchProducts();
-      }, []); */
+      }, []); 
     return (
       <div ref={ref} className="overflow-hidden p-2 w-full h-[calc(100vh-4rem)] flex flex-col justify-items-center "> 
         <section className="bg-white/10 backdrop-blur-sm w-full h-full rounded-xl overflow-hidden">
@@ -58,5 +50,3 @@ function ProductsPage() {
 }
 
 export default ProductsPage;
-
-

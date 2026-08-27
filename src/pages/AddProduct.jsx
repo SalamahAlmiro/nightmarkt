@@ -64,7 +64,7 @@ function AddProduct() {
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 id="name"
-                                className="w-full h-[2.5rem] pl-2 bg-white/50 rounded 
+                                className="w-full h-[2.5rem] text-black pl-2 bg-white/50 rounded 
                                 hover:bg-white/80 hover:shadow-lg hover:shadow-blue-500/40 
                                 focus:outline-none focus:ring-2 focus:ring-blue-800 transition focus:shadow-lg focus:shadow-blue-500 focus:bg-white"
                             />
@@ -78,7 +78,7 @@ function AddProduct() {
                                 value={price}
                                 onChange={(e) => setPrice(e.target.value)}
                                 id="price"
-                                className="w-full h-[2.5rem] pl-2 bg-white/50 rounded 
+                                className="w-full h-[2.5rem] text-black pl-2 bg-white/50 rounded 
                                 hover:bg-white/80 hover:shadow-lg hover:shadow-blue-500/40 
                                 focus:outline-none focus:ring-2 focus:ring-blue-800 transition focus:shadow-lg focus:shadow-blue-500 
                                 focus:bg-white"
@@ -94,7 +94,7 @@ function AddProduct() {
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 id="description"
-                                className="w-full h-[2.5rem] pl-2 bg-white/50 rounded 
+                                className="w-full h-[2.5rem] text-black pl-2 text-black bg-white/50 rounded 
                                 hover:bg-white/80 hover:shadow-lg hover:shadow-blue-500/40 
                                 focus:outline-none focus:ring-2 focus:ring-blue-800 transition focus:shadow-lg focus:shadow-blue-500
                                 focus:bg-white"
@@ -106,7 +106,7 @@ function AddProduct() {
                                 value={imageUrl}
                                 onChange={(e) => setImageUrl(e.target.value)}
                                 id="url"
-                                className="w-full h-[2.5rem] pl-2 bg-white/50 rounded 
+                                className="w-full h-[2.5rem] text-black pl-2 bg-white/50 rounded 
                                 hover:bg-white/80 hover:shadow-lg hover:shadow-blue-500/40 
                                 focus:outline-none focus:ring-2 focus:ring-blue-800 transition focus:shadow-lg focus:shadow-blue-500 
                                 focus:bg-white"

@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
   const { login } = useAuth();
-  
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -38,7 +37,7 @@ const RegisterPage = () => {
         shadow-black/75"
       >
         <div 
-          className="bg-gradient-to-b from-purple-950 to-blue-950 
+          className="bg-gradient-to-b from-gray-950 to-blue-950 
           w-full pt-5 h-[60%] 
           flex justify-center"
         >
@@ -49,9 +48,9 @@ const RegisterPage = () => {
             <label htmlFor="name" className="text-gray-300 text-lg">User Name</label>
             <input 
               id="name"
-              className="h-10 w-75 sm:w-82 pl-2 bg-white/50 rounded 
-              hover:bg-white/80 hover:shadow-lg hover:shadow-purple-500/40 
-              focus:outline-none focus:ring-2 focus:ring-purple-800 transition focus:shadow-lg focus:shadow-purple-500 focus:bg-white"
+              className="h-10 w-75 text-black sm:w-82 pl-2 bg-white/50 rounded 
+              hover:bg-white/80 hover:shadow-lg hover:shadow-gray-500/40 
+              focus:outline-none focus:ring-2 focus:ring-gray-800 transition focus:shadow-lg focus:shadow-gray-500 focus:bg-white"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -60,9 +59,9 @@ const RegisterPage = () => {
             <label htmlFor="email" className="text-gray-300 text-lg">Email</label>
             <input 
               id="email"
-              className="h-10 w-75 sm:w-82 pl-2 bg-white/50 rounded 
-              hover:bg-white/80 hover:shadow-lg hover:shadow-purple-500/40 
-              focus:outline-none focus:ring-2 focus:ring-purple-800 transition focus:shadow-lg focus:shadow-purple-500 focus:bg-white"
+              className="h-10 w-75 text-black sm:w-82 pl-2 bg-white/50 rounded 
+              hover:bg-white/80 hover:shadow-lg hover:shadow-gray-500/40 
+              focus:outline-none focus:ring-2 focus:ring-gray-800 transition focus:shadow-lg focus:shadow-gray-500 focus:bg-white"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -71,9 +70,9 @@ const RegisterPage = () => {
             <label htmlFor="password" className="text-gray-300 text-lg">Password</label>
             <input
               id="password" 
-              className="h-10 w-75 sm:w-82 pl-2 bg-white/50 rounded 
-              hover:bg-white/80 hover:shadow-lg hover:shadow-purple-500/40 
-              focus:outline-none focus:ring-2 focus:ring-purple-800 transition focus:shadow-lg focus:shadow-purple-500 focus:bg-white" 
+              className="h-10 w-75 text-black sm:w-82 pl-2 bg-white/50 rounded 
+              hover:bg-white/80 hover:shadow-lg hover:shadow-gray-500/40 
+              focus:outline-none focus:ring-2 focus:ring-gray-800 transition focus:shadow-lg focus:shadow-gray-500 focus:bg-white" 
               type="password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -81,8 +80,8 @@ const RegisterPage = () => {
           </div>
           <button 
             className="rounded text-lg font-semibold tracking-wide text-white outline-2 outline-blue-800 bg-black/50 py-1 px-4 m-5 
-            hover:bg-black/80  hover:cursor-pointer hover:shadow-lg hover:shadow-purple-500/40 
-            focus:outline-none focus:ring-2 focus:ring-purple-900 transition focus:shadow-lg focus:shadow-purple-500 focus:bg-black 
+            hover:bg-black/80  hover:cursor-pointer hover:shadow-lg hover:shadow-gray-500/40 
+            focus:outline-none focus:ring-2 focus:ring-gray-900 transition focus:shadow-lg focus:shadow-gray-500 focus:bg-black 
             active:scale-98 transition-transform duration-200"
             type="submit"
           >
