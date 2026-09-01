@@ -23,7 +23,7 @@ cp .env.example .env   # point this at your running marketplaceb instance if not
 npm run dev
 ```
 
-Requires [marketplaceb](https://github.com/SalamahAlmiro/marketplaceb) running for the app to have data to display.
+Requires [NightMarkt-API](https://github.com/SalamahAlmiro/NightMarkt-API) running for the app to have data to display.
 
 ## Project structure
 
