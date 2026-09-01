@@ -1,6 +1,6 @@
 # nightmarkt
 
-React frontend for a marketplace web application. Talks to the [marketplaceb](https://github.com/SalamahAlmiro/marketplaceb) API.
+React frontend for a marketplace web application. Talks to the [NightMarkt-API](https://github.com/SalamahAlmiro/NightMarkt-API) API.
 
 ## Features
 
