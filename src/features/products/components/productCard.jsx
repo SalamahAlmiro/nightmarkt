@@ -4,7 +4,7 @@ import Rating from "../../../components/rating";
 
 function ProductCard({ product, cardWidth }) {
   return (
-    <div style={{ width : cardWidth}} className="h-full hover:scale-[1.05] hover:shadow-xl transition-all p-2 bg-gradient-to-b from-blue-950 to-black rounded-lg grid place-items-stretch grid-rows-[45%_10%_30%_15%] gap-1 overflow-hidden">
+    <div style={{ width : cardWidth}} className="h-full hover:scale-[1.05] hover:shadow-xl hover:shadow-gray-500 transition-all p-2 bg-gradient-to-b from-blue-900 to-neutral-950 shadow-lg shadow-gray-900 rounded-lg grid place-items-stretch grid-rows-[45%_10%_30%_15%] gap-1 overflow-hidden">
       <div className="row-span-1">
         <img
           src={product.image_url}
