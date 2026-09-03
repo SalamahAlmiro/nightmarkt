@@ -81,8 +81,8 @@ function AddProduct() {
                                 onChange={(e) => setName(e.target.value)}
                                 id="name"
                                 className="w-full h-[2.5rem] pl-2 bg-white/50 rounded 
-                                hover:bg-white/80 hover:shadow-lg hover:shadow-purple-500/40 
-                                focus:outline-none focus:ring-2 focus:ring-purple-800 transition focus:shadow-lg focus:shadow-purple-500 focus:bg-white"
+                                hover:bg-white/80 hover:shadow-lg hover:shadow-blue-500/40 
+                                focus:outline-none focus:ring-2 focus:ring-neutral-800 transition focus:shadow-lg focus:shadow-blue-500 focus:bg-white"
                             />
                         </div> 
                         <div className="flex flex-col items-start">
@@ -95,8 +95,8 @@ function AddProduct() {
                                 onChange={(e) => setPrice(e.target.value)}
                                 id="price"
                                 className="w-full h-[2.5rem] pl-2 bg-white/50 rounded 
-                                hover:bg-white/80 hover:shadow-lg hover:shadow-purple-500/40 
-                                focus:outline-none focus:ring-2 focus:ring-purple-800 transition focus:shadow-lg focus:shadow-purple-500 
+                                hover:bg-white/80 hover:shadow-lg hover:shadow-blue-500/40 
+                                focus:outline-none focus:ring-2 focus:ring-neutral-800 transition focus:shadow-lg focus:shadow-blue-500 
                                 focus:bg-white"
                             />
                         </div>
@@ -111,8 +111,8 @@ function AddProduct() {
                                 onChange={(e) => setDescription(e.target.value)}
                                 id="description"
                                 className="w-full h-[2.5rem] pl-2 bg-white/50 rounded 
-                                hover:bg-white/80 hover:shadow-lg hover:shadow-purple-500/40 
-                                focus:outline-none focus:ring-2 focus:ring-purple-800 transition focus:shadow-lg focus:shadow-purple-500
+                                hover:bg-white/80 hover:shadow-lg hover:shadow-blue-500/40 
+                                focus:outline-none focus:ring-2 focus:ring-neutral-800 transition focus:shadow-lg focus:shadow-blue-500
                                 focus:bg-white"
                             />
                         </div>
@@ -123,8 +123,8 @@ function AddProduct() {
                                 onChange={(e) => setImageUrl(e.target.value)}
                                 id="url"
                                 className="w-full h-[2.5rem] pl-2 bg-white/50 rounded 
-                                hover:bg-white/80 hover:shadow-lg hover:shadow-purple-500/40 
-                                focus:outline-none focus:ring-2 focus:ring-purple-800 transition focus:shadow-lg focus:shadow-purple-500 
+                                hover:bg-white/80 hover:shadow-lg hover:shadow-blue-500/40 
+                                focus:outline-none focus:ring-2 focus:ring-neutral-800 transition focus:shadow-lg focus:shadow-blue-500 
                                 focus:bg-white"
                             />
                         </div>
@@ -147,8 +147,8 @@ function AddProduct() {
                             disabled={isSubmitting || !isImageValid}
                             className={`h-[2.25rem] w-[10rem] rounded text-lg font-semibold tracking-wide text-white outline-2 outline-blue-800 
                             bg-black/50 py-1 px-4 m-6 
-                            hover:bg-black/80  hover:cursor-pointer hover:shadow-lg hover:shadow-purple-500/40 
-                            focus:outline-none focus:ring-2 focus:ring-purple-900 transition focus:shadow-lg focus:shadow-purple-500 focus:bg-black 
+                            hover:bg-black/80  hover:cursor-pointer hover:shadow-lg hover:shadow-blue-500/40 
+                            focus:outline-none focus:ring-2 focus:ring-black transition focus:shadow-lg focus:shadow-blue-500 focus:bg-black 
                             active:scale-98 transition-transform duration-200`}
                             type="submit"
                         >
